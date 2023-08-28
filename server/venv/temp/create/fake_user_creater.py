@@ -10,9 +10,12 @@ def fake_user_creater(cursor, connection,  num_users = 100):
     income_data_list = []
     # Execute a SELECT query to get the last inserted ID from the "users" table
 
-    # cursor.execute("SELECT MAX(id) FROM users")
-    # user_id = cursor.fetchone()[0]
-    user_id = cursor.lastrowid + 1 #return 0 if there is none so we will start on 1 or one after last id
+    cursor.execute("SELECT MAX(id) FROM personal_finance_management_system.users;")
+    user_id = cursor.fetchone()[0]
+    if not user_id:
+        user_id = 0
+    user_id += 1
+    # user_id = cursor.lastrowid + 1 #return 0 if there is none so we will start on 1 or one after last id
 
     for user_id in range(user_id, user_id + num_users):
         age, created_at, balance, username, email, first_name, last_name, updated_at, age_group = generate_user_data()

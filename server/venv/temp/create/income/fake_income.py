@@ -1,13 +1,6 @@
 import random
-from datetime import datetime
+from datetime import datetime,timedelta
 from demographics.demographics import income_per_age
-
-
-# def calculate_months_since_creation(created_at):
-#     current_date = datetime.now()
-#     creation_date = datetime.strptime(created_at, "%Y-%m-%d")
-#     months_since_creation = (current_date.year - creation_date.year) * 12 + current_date.month - creation_date.month
-#     return months_since_creation
 
 def calculate_months_since_creation(created_at_str):
     current_date = datetime.now()
@@ -59,6 +52,8 @@ def createIncome(user_id, age_group, created_at, income_data_list):
         income = get_income(months,age_income_list)
         total_amount += income
         income_data_list.append((user_id, income, monthly, income_type, created_at))
+
+        created_at += timedelta(days=30)
 
     return total_amount
 

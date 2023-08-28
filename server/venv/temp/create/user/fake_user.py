@@ -56,7 +56,7 @@ def calculate_balance(age_group, created_at):
 # Create user data
 def generate_user_data():
     age_group = generate_age_group()
-    created_at = generate_created_at(random.randint(2000, 2023))#to change so it will look real
+    created_at = generate_created_at(random.randint(2020, 2023))#to change so it will look real
     age = split_age(age_group)
     balance = calculate_balance(age_group,created_at)
     username = fake.user_name()
