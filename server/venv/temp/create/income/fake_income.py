@@ -9,28 +9,36 @@ def calculate_months_since_creation(created_at_str):
     return months_since_creation
 
 
-def get_income(months,age_income_list):
-    current_month = datetime.now().month
-    current_year = datetime.now().year
+# def get_income(months,age_income_list):
+#     current_month = datetime.now().month
+#     current_year = datetime.now().year
 
-    income_index = current_year - 2020
-    # Calculate the number of years beyond the initial year
-    years_beyond = (current_month - months) // 12
+#     income_index = current_year - 2020
+#     # Calculate the number of years beyond the initial year
+#     years_beyond = (current_month - months) // 12
 
-    # Adjust the income index based on the years beyond
-    income_index -= years_beyond
+#     # Adjust the income index based on the years beyond
+#     income_index -= years_beyond
 
-    # Ensure the income index doesn't go below 0
-    income_index = max(income_index, 0)
-    income_index = min(income_index, len(age_income_list) - 1)
+#     # Ensure the income index doesn't go below 0
+#     income_index = max(income_index, 0)
+#     income_index = min(income_index, len(age_income_list) - 1)
 
-    return age_income_list[income_index]
+#     return age_income_list[income_index]
 
 
 def createIncome(user_id, age_group, created_at, income_data_list):
 
     # Convert created_at datetime to string
     created_at_str = created_at.strftime("%Y-%m-%d")
+
+    # pay day is between 1 and 20
+    if not 0 > created_at.day > 21:
+        new_month = created_at.month + 1
+        new_year = created_at.year + (new_month - 1) // 12
+        new_month = (new_month - 1) % 12 + 1
+        new_day = random.randint(1, 20)
+        created_at = created_at.replace(day=new_day, month=new_month, year=new_year)
 
     # Calculate months since user creation
     months_since_creation = calculate_months_since_creation(created_at_str)
@@ -47,13 +55,21 @@ def createIncome(user_id, age_group, created_at, income_data_list):
     total_amount = 0
     # getting the list by years
     age_income_list = income_per_age[age_group]
-    for months in range(months_since_creation):
-        
-        income = get_income(months,age_income_list)
+
+    # Preserve the day of the month while updating the month and year
+    for _ in range(months_since_creation):
+
+        # Calculate the new month and year while keeping the same day
+        new_month = created_at.month + 1
+        new_year = created_at.year + (new_month - 1) // 12
+        new_month = (new_month - 1) % 12 + 1
+
+        income = age_income_list[new_year - 2020]
         total_amount += income
+
+        # Update created_at with the new month and year while preserving the day
+        created_at = created_at.replace(month=new_month, year=new_year)
+
         income_data_list.append((user_id, income, monthly, income_type, created_at))
 
-        created_at += timedelta(days=30)
-
     return total_amount
-
