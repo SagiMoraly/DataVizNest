@@ -3,8 +3,8 @@
 # Insert user data into the database
 def insert_user_data(cursor, connection, user_data_list):
     insert_user_query = """
-    INSERT INTO users (username, age, email, firstName, lastName, createdAt, updatedAt, startBalance)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO users (username, age, email, firstName, lastName, createdAt, updatedAt, balance, startBalance)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     # user_data_list = (username, age, email, first_name, last_name, created_at, updated_at, balance)
     cursor.executemany(insert_user_query, user_data_list)

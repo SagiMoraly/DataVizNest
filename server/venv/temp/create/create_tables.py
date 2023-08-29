@@ -17,6 +17,7 @@ def create_tables(cursor):
         lastName VARCHAR(50),
         createdAt DATETIME,
         updatedAt DATETIME,
+        balance DECIMAL(10, 2),
         startBalance DECIMAL(10, 2)
     )
     """

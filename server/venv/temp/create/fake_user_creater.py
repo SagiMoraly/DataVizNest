@@ -24,8 +24,8 @@ def fake_user_creater(cursor, connection,  num_users = 100):
         newBalance += createIncome(user_id, age_group, created_at, income_data_list)
         # newBalance -= createExpenses(user_id, age_group, created_at)
         # newBalance -= createSavingsGoal(user_id, age_group, created_at)
-
-        user_data_list.append((username, age, email, first_name, last_name, created_at, updated_at, newBalance))
+        print(balance,newBalance)
+        user_data_list.append((username, age, email, first_name, last_name, created_at, updated_at, newBalance, balance))
 
     # input the data 
     insert_user_data(cursor, connection, user_data_list)

@@ -18,7 +18,7 @@ cursor = connection.cursor()
 create_tables(cursor)
 
 # Call the function to create 100 random users
-fake_user_creater(cursor, connection, 200)
+fake_user_creater(cursor, connection, 1)
 
 
 # Commit changes and close connection
