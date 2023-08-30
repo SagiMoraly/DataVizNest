@@ -1,5 +1,5 @@
 from create.user.fake_user import generate_user_data
-from create.income.fake_income import createIncome
+from create.income.fake_income import createIncomeAndExpense
 from insert_data.fake_data_insert import *
 
 
@@ -8,6 +8,7 @@ def fake_user_creater(cursor, connection,  num_users = 100):
     # num_users = 100
     user_data_list = []
     income_data_list = []
+    expense_data_list = []
     # Execute a SELECT query to get the last inserted ID from the "users" table
 
     cursor.execute("SELECT MAX(id) FROM personal_finance_management_system.users;")
@@ -21,15 +22,15 @@ def fake_user_creater(cursor, connection,  num_users = 100):
         age, created_at, balance, username, email, first_name, last_name, updated_at, age_group = generate_user_data()
         # Get the user's ID from the database and call related functions
         newBalance = balance
-        newBalance += createIncome(user_id, age_group, created_at, income_data_list)
-        # newBalance -= createExpenses(user_id, age_group, created_at)
-        # newBalance -= createSavingsGoal(user_id, age_group, created_at)
-        print(balance,newBalance)
+        newBalance += createIncomeAndExpense(user_id, age_group, created_at, income_data_list,expense_data_list)
+
+        # print(balance,newBalance)
         user_data_list.append((username, age, email, first_name, last_name, created_at, updated_at, newBalance, balance))
 
     # input the data 
     insert_user_data(cursor, connection, user_data_list)
     insert_income_data(cursor, connection, income_data_list)
+    insert_expense_data(cursor, connection, expense_data_list)
 
 
 # if __name__ == "__main__":
@@ -44,7 +45,7 @@ def fake_user_creater(cursor, connection,  num_users = 100):
 #v for each user create in each month from the starting date to today:
 #v Income:salary rare freelace and part time
 # 
-# Expenses:Rent,Groceries,Utilities
+#v Expenses:Rent,Groceries,Utilities
 # 
 # Savings:goals? the problem is the random how to do ?
 # 

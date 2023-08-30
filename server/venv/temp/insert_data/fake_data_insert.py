@@ -20,4 +20,12 @@ def insert_income_data(cursor, connection, income_data_list):
     cursor.executemany(insert_income_query, income_data_list)
     connection.commit()
 
-
+# Insert user_income data into the database
+def insert_expense_data(cursor, connection, expense_data_list):
+    insert_expense_query = """
+    INSERT INTO expenses (user_id, name, amount, createdAt)
+    VALUES (%s, %s, %s, %s)
+    """
+    # income_data_list = (user_id, name, amount, category, date, createdAt)
+    cursor.executemany(insert_expense_query, expense_data_list)
+    connection.commit()

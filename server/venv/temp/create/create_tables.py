@@ -44,8 +44,6 @@ def create_tables(cursor):
         user_id INT,
         name VARCHAR(100),
         amount DECIMAL(10, 2),
-        category VARCHAR(50),
-        date DATE,
         createdAt DATETIME,
         FOREIGN KEY (user_id) REFERENCES users(id)
     )
