@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from utils.database_utils import execute_query
+from utils.database_utils import execute_query,insert_fake_users
 from fake_users.create.fake_user_creater import fake_user_creater  
 
 
@@ -42,7 +42,7 @@ def get_savings_goals():
 @data_routes.route('/create_fake_users/<int:num_users>', methods=['POST'])
 def create_fake_users(num_users):
     # Call your data insertion function with the provided number of users
-    fake_user_creater(num_users)
+    insert_fake_users(num_users)
     
     response = {'message': f'{num_users} fake users created successfully'}
     return jsonify(response), 201

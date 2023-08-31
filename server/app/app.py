@@ -6,7 +6,7 @@ from routes.data_routes import data_routes
 app = Flask( __name__)
 
 CORS(app)
-# app.register_blueprint(data_routes)  
+app.register_blueprint(data_routes)  
 
 print("Flask server is up and running!")
 
