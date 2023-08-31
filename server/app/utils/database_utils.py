@@ -1,6 +1,6 @@
 import mysql.connector
-from fake_users.create.create_tables import create_tables
-from fake_users.create.fake_user_creater import fake_user_creater
+from app.fake_users.create.create_tables import create_tables
+from app.fake_users.create.fake_user_creater import fake_user_creater
 
 def execute_query(query, params=None):
     db_config = {
