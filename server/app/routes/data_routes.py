@@ -1,17 +1,11 @@
 from flask import Blueprint, jsonify
-from app.utils.database_utils import execute_query,insert_fake_users
-from app.fake_users.create.fake_user_creater import fake_user_creater  
-
+from app.utils.database_utils import execute_query,insert_fake_users,create_tables
 
 data_routes = Blueprint('data_routes', __name__)
 
 @data_routes.route('/create_tables', methods=['GET'])
 def create_tables():
-    query = """
-    -- SQL queries for creating tables
-    -- (Insert your create tables queries here)
-    """
-    
+    query = create_tables()
     result = execute_query(query)
     return jsonify(result)
 
