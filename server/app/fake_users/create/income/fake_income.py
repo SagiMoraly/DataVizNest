@@ -1,6 +1,6 @@
 import random
 from datetime import datetime,timedelta
-from demographics.demographics import income_per_age,rent_per_age_year
+from ...demographics.demographics import income_per_age,rent_per_age_year
 
 def calculate_months_since_creation(created_at_str):
     current_date = datetime.now()

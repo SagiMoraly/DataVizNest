@@ -4,10 +4,10 @@ from fake_users.create.fake_user_creater import fake_user_creater
 
 def execute_query(query, params=None):
     db_config = {
-        'host': 'your_host',
-        'user': 'your_user',
-        'password': 'your_password',
-        'database': 'your_database'
+        "user": "root",
+        "password": "123456",
+        "host": "localhost",
+        "database": "personal_finance_management_system"
     }
 
     connection = mysql.connector.connect(**db_config)

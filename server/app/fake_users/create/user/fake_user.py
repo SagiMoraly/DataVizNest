@@ -1,7 +1,7 @@
 import faker
 import random
 import datetime
-from demographics.demographics import balance_per_age 
+from ...demographics.demographics import balance_per_age 
 # import balance_per_age from "../../demographics/demographics"
 
 # Define age groups and their probabilities

@@ -1,6 +1,6 @@
-from create.user.fake_user import generate_user_data
-from create.income.fake_income import createIncomeAndExpense
-from insert_data.fake_data_insert import *
+from .user.fake_user import generate_user_data
+from .income.fake_income import createIncomeAndExpense
+from ..insert_data.fake_data_insert import *
 
 
 # Example of how to use the functions

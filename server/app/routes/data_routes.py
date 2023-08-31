@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from app.utils.database_utils import execute_query
-from app.fake_users.create.fake_user_creater import fake_user_creater  
+from utils.database_utils import execute_query
+from fake_users.create.fake_user_creater import fake_user_creater  
 
 
 data_routes = Blueprint('data_routes', __name__)
