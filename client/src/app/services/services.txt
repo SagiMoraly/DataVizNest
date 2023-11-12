@@ -1,2 +1,0 @@
-|   |-- services/                 # Angular services
-|   |   |-- user.service.ts       # Service for user data

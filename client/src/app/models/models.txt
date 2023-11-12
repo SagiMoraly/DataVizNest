@@ -1,2 +1,0 @@
-|   |-- models/                   # Data models or interfaces
-|   |   |-- user.ts               # User data model

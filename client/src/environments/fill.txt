@@ -1,2 +1,0 @@
-|   |-- environment.ts            # Development environment config
-|   |-- environment.prod.ts       # Production environment config

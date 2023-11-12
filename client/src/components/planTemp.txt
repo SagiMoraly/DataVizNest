@@ -1,0 +1,24 @@
+
+
+
+
+1.Visualize the distribution of users' ages using a bar chart to show how many users fall into each age group.
+PieChart
+
+2.Create a scatter plot with age on the x-axis and starting balance on the y-axis. Each point represents a user, showing the relationship between age and starting balance.
+ScatterPlot https://nivo.rocks/scatterplot/
+
+3.Use box plots to display the income distribution for different age groups, helping to highlight the median, quartiles, and potential outliers.
+BoxPlot https://nivo.rocks/boxplot/
+
+4.Create a stacked bar chart to display the distribution of income sources for each age group, showcasing how income composition varies.
+Bar https://nivo.rocks/bar/
+
+5.Plot the total income for each year over time using a line chart, illustrating trends and fluctuations.
+Line https://nivo.rocks/line/
+
+6.Visualize the correlation matrix between numerical variables (e.g., age, starting balance, income) using a heatmap.
+HeatMap https://nivo.rocks/heatmap/
+
+?Present a pie chart showing the proportion of expenses across different categories to visualize spending patterns.
+cool but hard ?Use a bar chart to show the progress of users' savings goals over time, with bars representing the current amount saved towards the target.
