@@ -399,34 +399,46 @@ export const mockBarData = [
 
 export const mockPieData = [
   {
-    id: "Age 18-27",
-    label: "Age 18-27",
+    id: "Age1829",
+    label: "Age 18-29",
     value: 239,
     color: "hsl(104, 70%, 50%)",
   },
   {
-    id: "make",
-    label: "make",
+    id: "Age3039",
+    label: "Age 30-39",
     value: 170,
     color: "hsl(162, 70%, 50%)",
   },
   {
-    id: "go",
-    label: "go",
+    id: "Age4049",
+    label: "Age 40-49",
     value: 322,
     color: "hsl(291, 70%, 50%)",
   },
   {
-    id: "lisp",
-    label: "lisp",
+    id: "Age5059",
+    label: "Age 50-59",
     value: 503,
     color: "hsl(229, 70%, 50%)",
   },
   {
-    id: "scala",
-    label: "scala",
+    id: "Age6069",
+    label: "Age 60-69",
     value: 584,
     color: "hsl(344, 70%, 50%)",
+  },
+  {
+    id: "Age7079",
+    label: "Age 70-79",
+    value: 503,
+    color: "hsl(120, 70%, 50%)",
+  },
+  {
+    id: "Age8090",
+    label: "Age 80-90",
+    value: 584,
+    color: "hsl(82, 70%, 50%)",
   },
 ];
 
