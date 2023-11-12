@@ -9,12 +9,41 @@ const ScatterPlot = () => {
   return (
     <ResponsiveScatterPlot
       data={data}
+      theme={{
+        axis: {
+          domain: {
+            line: {
+              stroke: colors.grey[100],
+            },
+          },
+          legend: {
+            text: {
+              fill: colors.grey[100],
+            },
+          },
+          ticks: {
+            line: {
+              stroke: colors.grey[100],
+              strokeWidth: 1,
+            },
+            text: {
+              fill: colors.grey[100],
+            },
+          },
+        },
+        legends: {
+          text: {
+            fill: colors.grey[100],
+          },
+        },
+      }}
       margin={{ top: 60, right: 140, bottom: 70, left: 90 }}
       xScale={{ type: "linear", min: 0, max: "auto" }}
       xFormat=">-.2f"
       yScale={{ type: "linear", min: 0, max: "auto" }}
       yFormat=">-.2f"
-      blendMode="multiply"
+      colors={{ scheme: "set1" }}
+      blendMode="screen"
       axisTop={null}
       axisRight={null}
       axisBottom={{
