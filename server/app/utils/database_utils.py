@@ -51,18 +51,18 @@ def insert_fake_users(num_users):
 
 
 
-def create_tables():
-    db_config = {
-        "user": "root",
-        "password": "123456",
-        "host": "localhost",
-    }
+# def create_tables():
+#     db_config = {
+#         "user": "root",
+#         "password": "123456",
+#         "host": "localhost",
+#     }
 
-    connection = mysql.connector.connect(**db_config)
-    cursor = connection.cursor()
+#     connection = mysql.connector.connect(**db_config)
+#     cursor = connection.cursor()
 
-    create_tables(cursor)
+#     create_tables(cursor)
 
-    cursor.close()
-    connection.close()
+#     cursor.close()
+#     connection.close()
 
