@@ -20,15 +20,81 @@ ScatterPlot https://nivo.rocks/scatterplot/
 
 3.Use box plots to display the income distribution for different age groups, helping to highlight the median, quartiles, and potential outliers.
 BoxPlot https://nivo.rocks/boxplot/
-
+  {
+    group: "Alpha",
+    subgroup: "A",
+    mu: 5,
+    sd: 1,
+    n: 20,
+    value: 4.6483261970788305,
+  },
 ?
 
 4.Create a stacked bar chart to display the distribution of income sources for each age group, showcasing how income composition varies.
 Bar https://nivo.rocks/bar/
 
+{
+    country: "AD",
+    "hot dog": 137,
+    "hot dogColor": "hsl(229, 70%, 50%)",
+    burger: 96,
+    burgerColor: "hsl(296, 70%, 50%)",
+    kebab: 72,
+    kebabColor: "hsl(97, 70%, 50%)",
+    donut: 140,
+    donutColor: "hsl(340, 70%, 50%)",
+  }
+
 5.Plot the total income for each year over time using a line chart, illustrating trends and fluctuations.
 Line https://nivo.rocks/line/
 
+[
+      {
+    id: "18-29",
+    color: tokens("dark").blueAccent[300],
+    data: [
+      {
+        x: "2020",
+        y: 101,
+      },
+      {
+        x: "2021",
+        y: 75,
+      },
+      {
+        x: "2022",
+        y: 36,
+      },
+      {
+        x: "2023",
+        y: 216,
+      },
+    ],
+  },
+  {
+    id: "29-39",
+    color: tokens("dark").redAccent[200],
+    data: [
+      {
+        x: "2020",
+        y: 212,
+      },
+      {
+        x: "2021",
+        y: 190,
+      },
+      {
+        x: "2022",
+        y: 270,
+      },
+      {
+        x: "2023",
+        y: 9,
+      },
+
+    ],
+  },...
+]
 
 6.Visualize the correlation matrix between numerical variables (e.g., age, starting balance, income) using a heatmap.
 HeatMap https://nivo.rocks/heatmap/
@@ -45,8 +111,12 @@ page for each some in the front page maybe live user adding ***
 
     list of data needed from server for front end
 
+    make the sql querys into seprate file
+    add try and except 
+
     delete all unnecessary library 
+    cleanup for code
 tommorow - 
-    fix SQL
+    
 
 

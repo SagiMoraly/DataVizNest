@@ -11,16 +11,16 @@ def execute_query(query, params=None):
     }
 
     connection = mysql.connector.connect(**db_config)
-    cursor = connection.cursor()
-
+    cursor = connection.cursor(buffered=True)
+    
     if params:
         cursor.execute(query, params)
     else:
         cursor.execute(query)
 
-    result = None
-    if query.lower().startswith('select'):
-        result = cursor.fetchall()
+    # result = None
+    # if query.lower().startswith('select'):
+    result = cursor.fetchall()
 
     connection.commit()
     cursor.close()
