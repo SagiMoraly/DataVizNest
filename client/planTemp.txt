@@ -99,6 +99,83 @@ Line https://nivo.rocks/line/
 6.Visualize the correlation matrix between numerical variables (e.g., age, starting balance, income) using a heatmap.
 HeatMap https://nivo.rocks/heatmap/
 
+[
+  {
+    id: "18-29",
+    data: [
+      {
+        x: "starting_balance",
+        y: 38336,
+      },
+      {
+        x: "income_salary",
+        y: -14847,
+      },
+      {
+        x: "income_part_time",
+        y: -74787,
+      },
+      {
+        x: "income_freelance",
+        y: 55948,
+      },
+      {
+        x: "expenses_Utilities",
+        y: 89955,
+      },
+      {
+        x: "expenses_Rent",
+        y: -12397,
+      },
+      {
+        x: "expenses_Groceries",
+        y: -66291,
+      },
+      {
+        x: "expenses_Entertainment",
+        y: -1981,
+      }
+    ],
+  },
+  {
+    id: "30-39",
+    data: [
+      {
+        x: "starting_balance",
+        y: -13140,
+      },
+      {
+        x: "income_salary",
+        y: 74960,
+      },
+      {
+        x: "income_part_time",
+        y: -3862,
+      }
+      {
+        x: "income_freelance",
+        y: 12638,
+      },
+      {
+        x: "expenses_Utilities",
+        y: -87676,
+      },
+      {
+        x: "expenses_Rent",
+        y: 40747,
+      },
+      {
+        x: "expenses_Groceries",
+        y: -84953,
+      },
+      {
+        x: "expenses_Entertainment",
+        y: -48285,
+      },
+    ],
+  },
+
+
 ?Present a pie chart showing the proportion of expenses across different categories to visualize spending patterns.
 cool but hard ?Use a bar chart to show the progress of users' savings goals over time, with bars representing the current amount saved towards the target.
 

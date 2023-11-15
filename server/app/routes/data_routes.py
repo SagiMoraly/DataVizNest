@@ -238,7 +238,6 @@ GROUP BY age_group;
     }
     try:
         data = execute_query(query)
-        print(data)
         result = []
         for row in data:
             age_group = row[0]
@@ -258,3 +257,52 @@ GROUP BY age_group;
 
     except Exception as e:
         return jsonify({'error': str(e)})
+    
+@data_routes.route('/get_users_heatmap', methods=['GET'])
+def get_users_heatmap():
+    query = """
+    SELECT
+        CASE
+            WHEN u.age BETWEEN 18 AND 29 THEN '18-29'
+            WHEN u.age BETWEEN 30 AND 39 THEN '30-39'
+            WHEN u.age BETWEEN 40 AND 49 THEN '40-49'
+            WHEN u.age BETWEEN 50 AND 59 THEN '50-59'
+            WHEN u.age BETWEEN 60 AND 69 THEN '60-69'
+            WHEN u.age BETWEEN 70 AND 79 THEN '70-79'
+            WHEN u.age BETWEEN 80 AND 90 THEN '80-90'
+            ELSE 'Other'
+        END AS age_group,
+        AVG(CASE WHEN i.name = 'salary' THEN i.amount ELSE 0 END) AS income_salary,
+        AVG(CASE WHEN i.name = 'part_time' THEN i.amount ELSE 0 END) AS income_part_time,
+        AVG(CASE WHEN i.name = 'freelance' THEN i.amount ELSE 0 END) AS income_freelance,
+        AVG(CASE WHEN e.name = 'Utilities' THEN e.amount ELSE 0 END) AS expenses_Utilities,
+        AVG(CASE WHEN e.name = 'Rent' THEN e.amount ELSE 0 END) AS expenses_Rent,
+        AVG(CASE WHEN e.name = 'Groceries' THEN e.amount ELSE 0 END) AS expenses_Groceries,
+        AVG(CASE WHEN e.name = 'Entertainment' THEN e.amount ELSE 0 END) AS expenses_Entertainment,
+        AVG(u.startBalance) AS start_balance,
+        AVG(u.balance) AS balance
+        -- Add other expense categories here if needed
+    FROM users u
+    LEFT JOIN income i ON u.id = i.user_id
+    LEFT JOIN expenses e ON u.id = e.user_id
+    GROUP BY age_group;
+    """
+    data = execute_query(query)
+    result = []
+    for row in data:
+        age_group = row[0]
+        result_data = [
+            {'x': 'start_balance', 'y': row[1]},
+            {'x': 'income_salary', 'y': row[2]},
+            {'x': 'income_part_time', 'y': row[3]},
+            {'x': 'income_freelance', 'y': row[4]},
+            {'x': 'expenses_Utilities', 'y': -row[5]},
+            {'x': 'expenses_Rent', 'y': -row[6]},
+            {'x': 'expenses_Groceries', 'y': -row[7]},
+            {'x': 'expenses_Entertainment', 'y': -row[8]},
+            {'x': 'balance', 'y': row[9]}
+        ]
+        result.append({'id': age_group, 'data': result_data})
+    
+    return jsonify(result)
+
