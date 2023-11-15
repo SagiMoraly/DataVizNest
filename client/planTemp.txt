@@ -188,12 +188,11 @@ page for each some in the front page maybe live user adding ***
 
     list of data needed from server for front end
 
-    make the sql querys into seprate file
     add try and except 
 
     delete all unnecessary library 
     cleanup for code
 tommorow - 
-    
+    fronend http request from server 
 
 

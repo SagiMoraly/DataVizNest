@@ -19,101 +19,131 @@ data_routes = Blueprint('data_routes', __name__)
 
 @data_routes.route('/create_tables', methods=['GET'])
 def create_tables():
-    query = create_tables()
-    result = execute_query(query)
-    return jsonify(result)
+    try:
+        query = create_tables()
+        result = execute_query(query)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_users', methods=['GET'])
 def get_users():
-    query = query_get_users
-    data = execute_query(query)
-    return jsonify(data)
+    try:
+        query = query_get_users
+        data = execute_query(query)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_income_sources', methods=['GET'])
 def get_income_sources():
-    query = query_get_income_sources
-    data = execute_query(query)
-    return jsonify(data)
+    try:
+        query = query_get_income_sources
+        data = execute_query(query)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_expenses', methods=['GET'])
 def get_expenses():
-    query = query_get_expenses
-    data = execute_query(query)
-    return jsonify(data)
+    try:
+        query = query_get_expenses
+        data = execute_query(query)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_savings_goals', methods=['GET'])
 def get_savings_goals():
-    query = query_get_savings_goals
-    data = execute_query(query)
-    return jsonify(data)
+    try:
+        query = query_get_savings_goals
+        data = execute_query(query)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/create_fake_users/<int:num_users>', methods=['POST'])
 def create_fake_users(num_users):
-    # Call your data insertion function with the provided number of users
-    insert_fake_users(num_users)
-    
-    response = {'message': f'{num_users} fake users created successfully'}
-    return jsonify(response), 201
+    try:
+        # Call your data insertion function with the provided number of     users
+        insert_fake_users(num_users)
+
+        response = {'message': f'{num_users} fake users created     successfully'}
+        return jsonify(response), 201
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_users_pie_chart', methods=['GET'])
 def get_users_pie_chart():
-    query = query_get_users_pie_chart
-    data = execute_query(query)
-    data = [{'age': row[0], 'number_of_users': row[1]} for row in data]
-    return jsonify(data)
+    try:
+        query = query_get_users_pie_chart
+        data = execute_query(query)
+        data = [{'age': row[0], 'number_of_users': row[1]} for row in   data]
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 
 @data_routes.route('/get_users_scatter_plot', methods=['GET'])
 def get_users_scatter_plot():
-    query = query_get_users_scatter_plot
-    data = execute_query(query)
-    data = [{'age': row[0], 'average_start_balance': row[1]} for row in data]
-    return jsonify(data)
+    try:
+        query = query_get_users_scatter_plot
+        data = execute_query(query)
+        data = [{'age': row[0], 'average_start_balance': row[1]} for    row in data]
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_users_box_plot', methods=['GET'])
 def get_users_box_plot():
-    query = query_get_users_box_plot
-    data = execute_query(query)
-    result = [
-        {
-            'group': row[0],
-            'subgroup': row[1],
-            'mu': row[2],
-            'sd': row[3],
-            'n': row[4],
-            'value': row[5]
-        }
-        for row in data
-    ]
-    return jsonify(result)
+    try:
+        query = query_get_users_box_plot
+        data = execute_query(query)
+        result = [
+            {
+                'group': row[0],
+                'subgroup': row[1],
+                'mu': row[2],
+                'sd': row[3],
+                'n': row[4],
+                'value': row[5]
+            }
+            for row in data
+        ]
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 
 @data_routes.route('/get_users_bar_chart', methods=['GET'])
 def get_users_bar_chart():
-    query = query_get_users_bar_chart
-    data = execute_query(query)
-    result = []
-    for row in data:
-        age_group = row[0]
-        freelance = row[1]
-        part_time = row[2]
-        salary = row[3]
-        
-        freelance_color = "HSL(33, 100%, 50%)"
-        part_time_color = "HSL(147, 50%, 50%)"
-        salary_color = "HSL(225, 73%, 57%)"
+    try:
+        query = query_get_users_bar_chart
+        data = execute_query(query)
+        result = []
+        for row in data:
+            age_group = row[0]
+            freelance = row[1]
+            part_time = row[2]
+            salary = row[3]
 
-        result.append({
-            'country': age_group,
-            'freelance': freelance,
-            'freelanceColor': freelance_color,
-            'part_time': part_time,
-            'part_timeColor': part_time_color,
-            'salary': salary,
-            'salaryColor': salary_color
-        })
+            freelance_color = "HSL(33, 100%, 50%)"
+            part_time_color = "HSL(147, 50%, 50%)"
+            salary_color = "HSL(225, 73%, 57%)"
 
-    return jsonify(result)
+            result.append({
+                'country': age_group,
+                'freelance': freelance,
+                'freelanceColor': freelance_color,
+                'part_time': part_time,
+                'part_timeColor': part_time_color,
+                'salary': salary,
+                'salaryColor': salary_color
+            })
+
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 @data_routes.route('/get_users_line_chart', methods=['GET'])
 def get_users_line_chart():
@@ -147,23 +177,26 @@ def get_users_line_chart():
     
 @data_routes.route('/get_users_heatmap', methods=['GET'])
 def get_users_heatmap():
-    query = query_get_users_heatmap
-    data = execute_query(query)
-    result = []
-    for row in data:
-        age_group = row[0]
-        result_data = [
-            {'x': 'start_balance', 'y': row[1]},
-            {'x': 'income_salary', 'y': row[2]},
-            {'x': 'income_part_time', 'y': row[3]},
-            {'x': 'income_freelance', 'y': row[4]},
-            {'x': 'expenses_Utilities', 'y': -row[5]},
-            {'x': 'expenses_Rent', 'y': -row[6]},
-            {'x': 'expenses_Groceries', 'y': -row[7]},
-            {'x': 'expenses_Entertainment', 'y': -row[8]},
-            {'x': 'balance', 'y': row[9]}
-        ]
-        result.append({'id': age_group, 'data': result_data})
-    
-    return jsonify(result)
+    try:
+        query = query_get_users_heatmap
+        data = execute_query(query)
+        result = []
+        for row in data:
+            age_group = row[0]
+            result_data = [
+                {'x': 'start_balance', 'y': row[1]},
+                {'x': 'income_salary', 'y': row[2]},
+                {'x': 'income_part_time', 'y': row[3]},
+                {'x': 'income_freelance', 'y': row[4]},
+                {'x': 'expenses_Utilities', 'y': -row[5]},
+                {'x': 'expenses_Rent', 'y': -row[6]},
+                {'x': 'expenses_Groceries', 'y': -row[7]},
+                {'x': 'expenses_Entertainment', 'y': -row[8]},
+                {'x': 'balance', 'y': row[9]}
+            ]
+            result.append({'id': age_group, 'data': result_data})
+
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
