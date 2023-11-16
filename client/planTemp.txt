@@ -203,15 +203,10 @@ page for each some in the front page maybe live user adding ***
 
     put the mySQL into the AWS cloud 
 
-download axios
+move transformDataForPieChart to backend?
+
+fix typeScript for all 
 
 tommorow - 
-    fronend http request from server 
-    folder hooks
-        useData
-            handelers
-                requestStatus
-                getUser
-                setLoadingUser
-        useAPI 
-            getUsers
+
+

@@ -17,7 +17,7 @@ from .querys.query import (
 
 data_routes = Blueprint('data_routes', __name__)
 
-@data_routes.route('/create_tables', methods=['GET'])
+@data_routes.route('/create_tables', methods=['POST'])
 def create_tables():
     try:
         query = create_tables()

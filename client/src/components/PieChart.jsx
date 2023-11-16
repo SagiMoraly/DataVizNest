@@ -3,12 +3,12 @@ import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 // import { mockPieData as data } from "../data/mockData";
 import { useEffect, useState } from "react";
-import useAPI from "../API/useAPI.ts";
+import useHandler from "../hooks/useHandler.ts";
 
 const PieChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const { get_users_pie_chart } = useAPI();
+  const { handle_get_users_pie_chart } = useHandler();
   const [APIdata, setAPIData] = useState(null);
 
   const transformDataForPieChart = (originalData) => {
@@ -18,17 +18,13 @@ const PieChart = () => {
       value: entry.number_of_users,
       color: `hsl(${Math.random() * 360}, 70%, 50%)`,
     }));
-  };
+  }; // move to back end
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        let data = await get_users_pie_chart();
-        data = transformDataForPieChart(data);
-        setAPIData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      let data = await handle_get_users_pie_chart();
+      data = transformDataForPieChart(data);
+      setAPIData(data);
     };
     fetchData();
   }, []);
