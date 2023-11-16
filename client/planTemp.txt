@@ -186,13 +186,32 @@ cool but hard ?Use a bar chart to show the progress of users' savings goals over
 future: 
 page for each some in the front page maybe live user adding ***
 
-    list of data needed from server for front end
+    pages
+        front page - hello 
+        about - about me and why did i do it
+        users - just to go around them / create them (num) / reset (warning)
+        pie chart
+        scatter plot
+        box plots
+        bar chart
+        line chart
+        heatmap
 
-    add try and except 
 
     delete all unnecessary library 
     cleanup for code
+
+    put the mySQL into the AWS cloud 
+
+download axios
+
 tommorow - 
     fronend http request from server 
-
-
+    folder hooks
+        useData
+            handelers
+                requestStatus
+                getUser
+                setLoadingUser
+        useAPI 
+            getUsers
