@@ -149,9 +149,13 @@ def get_users_bar_chart():
 def get_users_line_chart():
     query = query_get_users_line_chart
     age_group_colors = {
-        "18-29": "blue",
-        "30-39": "red",
-        # make colors for other age groups here
+    "18-29": "tokens('dark').blueAccent[300]",
+    "30-39": "tokens('dark').redAccent[200]",
+    "40-49": "tokens('dark').greenAccent[400]",
+    "50-59": "tokens('dark').yellowAccent[700]",
+    "60-69": "tokens('dark').orangeAccent[500]",
+    "70-79": "tokens('dark').purpleAccent[300]",
+    "80-90": "tokens('dark').pinkAccent[200]",
     }
     try:
         data = execute_query(query)

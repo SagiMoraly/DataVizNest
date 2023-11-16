@@ -1,15 +1,39 @@
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockLineData as data } from "../data/mockData";
+// import { mockLineData as data } from "../data/mockData";
+import { useEffect, useState } from "react";
+import useHandler from "../hooks/useHandler.ts";
 
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const { handle_get_users_line_chart } = useHandler();
+  const [APIdata, setAPIData] = useState(null);
+
+  const transformLineData = (originalData) => {
+    return originalData.map((entry) => ({
+      id: entry.id,
+      color: entry.color.replace(/["']/g, ""),
+      data: entry.data
+        .map((item) => ({ x: item.x, y: item.y }))
+        .sort((a, b) => (a.x > b.x ? 1 : -1)),
+    }));
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await handle_get_users_line_chart();
+      data = transformLineData(data);
+      console.log(data);
+      setAPIData(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <ResponsiveLine
-      data={data}
+      data={APIdata}
       theme={{
         axis: {
           domain: {

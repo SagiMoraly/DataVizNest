@@ -207,6 +207,8 @@ move transformDataForPieChart to backend?
 
 fix typeScript for all 
 
+give description for each graph so it will make sense  
+
 tommorow - 
 
 
