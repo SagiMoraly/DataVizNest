@@ -49,33 +49,10 @@ GROUP BY age_group;
 query_get_users_box_plot = """SELECT
     age_group,
     'A' AS subgroup,
-    AVG(amount) AS mu,
-    STDDEV(amount) AS sd,
-    COUNT(amount) AS n,
-    (
-        SELECT
-            AVG(amount) AS median
-        FROM (
-            SELECT
-                i.amount,
-                ROW_NUMBER() OVER (ORDER BY i.amount) as row_num,
-                COUNT(*) OVER () as total_rows
-            FROM personal_finance_management_system.users u
-            LEFT JOIN personal_finance_management_system.income i ON u.id = i.user_id
-            WHERE
-                CASE
-                    WHEN u.age BETWEEN 18 AND 29 THEN 'Age18-29'
-                    WHEN u.age BETWEEN 30 AND 39 THEN 'Age30-39'
-                    WHEN u.age BETWEEN 40 AND 49 THEN 'Age40-49'
-                    WHEN u.age BETWEEN 50 AND 59 THEN 'Age50-59'
-                    WHEN u.age BETWEEN 60 AND 69 THEN 'Age60-69'
-                    WHEN u.age BETWEEN 70 AND 79 THEN 'Age70-79'
-                    WHEN u.age BETWEEN 80 AND 90 THEN 'Age80-90'
-                    ELSE 'Other'
-                END = age_group
-        ) AS ranked
-        WHERE row_num IN (FLOOR((total_rows+1)/2), FLOOR((total_rows+2)/2))
-    ) AS value
+    AVG(amount) OVER (PARTITION BY age_group) AS mu,
+    STDDEV(amount) OVER (PARTITION BY age_group) AS sd,
+    COUNT(amount) OVER (PARTITION BY age_group) AS n,
+    amount AS value
 FROM (
     SELECT
         CASE
@@ -92,7 +69,8 @@ FROM (
     FROM personal_finance_management_system.users u
     LEFT JOIN personal_finance_management_system.income i ON u.id = i.user_id
 ) AS main
-GROUP BY age_group;
+ORDER BY age_group, subgroup, value;
+
     """
 
 query_get_users_bar_chart = """SELECT

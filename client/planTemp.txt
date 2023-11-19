@@ -207,6 +207,8 @@ page for each some in the front page maybe live user adding ***
 move transformDataForPieChart to backend?
   sepreate folder
 
+rig box plot in the fake user to look better 
+
 fix typeScript for all 
 
 give description for each graph so it will make sense  
