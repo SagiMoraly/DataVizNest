@@ -19,19 +19,32 @@ END AS age_group,
             GROUP BY age_group;
 """
 query_get_users_scatter_plot = """SELECT
-    CASE
-        WHEN age BETWEEN 18 AND 29 THEN 'Age18-29'
-        WHEN age BETWEEN 30 AND 39 THEN 'Age30-39'
-        WHEN age BETWEEN 40 AND 49 THEN 'Age40-49'
-        WHEN age BETWEEN 50 AND 59 THEN 'Age50-59'
-        WHEN age BETWEEN 60 AND 69 THEN 'Age60-69'
-        WHEN age BETWEEN 70 AND 79 THEN 'Age70-79'
-        WHEN age BETWEEN 80 AND 90 THEN 'Age80-90'
-    ELSE 'Other'
-END AS age_group,
-    AVG(startBalance) AS average_start_balance
-        FROM users
-            GROUP BY age_group;
+    JSON_OBJECT(
+        'id', age_group,
+        'data', JSON_ARRAYAGG(
+            JSON_OBJECT(
+                'x', age,
+                'y', startBalance
+            )
+        )
+    ) AS group_data
+FROM (
+    SELECT
+        CASE
+            WHEN age BETWEEN 18 AND 29 THEN 'Age18-29'
+            WHEN age BETWEEN 30 AND 39 THEN 'Age30-39'
+            WHEN age BETWEEN 40 AND 49 THEN 'Age40-49'
+            WHEN age BETWEEN 50 AND 59 THEN 'Age50-59'
+            WHEN age BETWEEN 60 AND 69 THEN 'Age60-69'
+            WHEN age BETWEEN 70 AND 79 THEN 'Age70-79'
+            WHEN age BETWEEN 80 AND 90 THEN 'Age80-90'
+            ELSE 'Other'
+        END AS age_group,
+        age,
+        startBalance
+    FROM users
+) AS subquery
+GROUP BY age_group;
 """
 query_get_users_box_plot = """SELECT
     age_group,

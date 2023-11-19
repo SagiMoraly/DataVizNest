@@ -89,7 +89,7 @@ def get_users_scatter_plot():
     try:
         query = query_get_users_scatter_plot
         data = execute_query(query)
-        data = [{'age': row[0], 'average_start_balance': row[1]} for    row in data]
+        # data = [{'age': row[0], 'average_start_balance': row[1]} for    row in data]
         return jsonify(data)
     except Exception as e:
         return jsonify({'error': str(e)})

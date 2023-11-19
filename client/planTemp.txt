@@ -3,7 +3,7 @@
 
 
 1.Visualize the distribution of users' ages using a bar chart to show how many users fall into each age group.
-PieChart
+PieChart: /pie
 "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-90"
 {
     id:Age1829
@@ -11,6 +11,7 @@ PieChart
 }
 
 2.Create a scatter plot with age on the x-axis and starting balance on the y-axis. Each point represents a user, showing the relationship between age and starting balance.
+ScatterPlot: /scatterplot
 ScatterPlot https://nivo.rocks/scatterplot/
 
 {
@@ -204,6 +205,7 @@ page for each some in the front page maybe live user adding ***
     put the mySQL into the AWS cloud 
 
 move transformDataForPieChart to backend?
+  sepreate folder
 
 fix typeScript for all 
 
