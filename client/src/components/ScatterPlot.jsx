@@ -15,7 +15,7 @@ const ScatterPlot = () => {
     const fetchData = async () => {
       let data = await handle_get_users_scatter_plot();
       setAPIData(data.map((item) => JSON.parse(item)));
-      console.log(APIdata);
+      // console.log(APIdata);
     };
     fetchData();
   }, []);

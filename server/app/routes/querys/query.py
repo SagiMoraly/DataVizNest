@@ -1,5 +1,7 @@
 
-query_get_users = "SELECT * FROM users"
+query_get_users = """SELECT
+	JSON_OBJECT('id',id, 'username', username, 'age',age,  'email',email, 'firstName',firstName, 'lastName',lastName, 'createdAt',createdAt, 'updatedAt',updatedAt, 'balance', balance, 'startBalance',startBalance)
+    FROM users"""
 query_get_income_sources = "SELECT * FROM income"
 query_get_expenses = "SELECT * FROM expenses"
 query_get_savings_goals = "SELECT * FROM savings_goals"

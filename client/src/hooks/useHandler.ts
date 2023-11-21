@@ -149,6 +149,7 @@ const useHandler = () => {
 
   return {
     value,
+    handle_get_users,
     handle_get_income_sources,
     handle_get_expenses,
     handle_get_savings_goals,
