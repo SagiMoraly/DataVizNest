@@ -217,5 +217,8 @@ give description for each graph so it will make sense
 
 tommorow - 
   colors
+  looks 
+  text
+  subtext for charts
   
 
