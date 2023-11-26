@@ -3,7 +3,9 @@ from app.utils.database_utils import execute_query,insert_fake_users,create_tabl
 # from graphql import graphql
 import json
 from .querys.query import (
+    query_patch_hard_reset,
     query_get_users,
+    query_get_count_sources,
     query_get_income_sources,
     query_get_expenses,
     query_get_savings_goals,
@@ -17,10 +19,10 @@ from .querys.query import (
 
 data_routes = Blueprint('data_routes', __name__)
 
-@data_routes.route('/create_tables', methods=['POST'])
-def create_tables():
+@data_routes.route('/reset_and_create_tables', methods=['patch'])
+def reset_and_create_tables():
     try:
-        query = create_tables()
+        query = query_patch_hard_reset
         result = execute_query(query)
         return jsonify(result)
     except Exception as e:
@@ -30,6 +32,15 @@ def create_tables():
 def get_users():
     try:
         query = query_get_users
+        data = execute_query(query)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+@data_routes.route('/get_sum_users', methods=['GET'])
+def get_sum_users():
+    try:
+        query = query_get_count_sources
         data = execute_query(query)
         return jsonify(data)
     except Exception as e:

@@ -25,7 +25,6 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
     const fetchData = async () => {
       let data = await handle_get_users_line_chart();
       data = transformLineData(data);
-      console.log(data);
       setAPIData(data);
     };
     fetchData();

@@ -209,11 +209,14 @@ move transformDataForPieChart to backend?
 
 rig box plot in the fake user to look better 
 chack for numbers make sense 
+fix reset to 0
 
 fix typeScript for all 
 colors for all
 
 give description for each graph so it will make sense  
+users in the useHandler
+
 
 tommorow - 
   colors

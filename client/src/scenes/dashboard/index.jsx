@@ -13,10 +13,22 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import { useEffect, useState } from "react";
+import useHandler from "../../hooks/useHandler.ts";
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const { handle_get_sum_users } = useHandler();
+  const [APIdata, setAPIData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = await handle_get_sum_users();
+      setAPIData(data[0][0]);
+    };
+    fetchData();
+  }, []);
 
   return (
     <Box m="20px">
@@ -56,7 +68,7 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="get number of users"
+            title={"Number of users: " + APIdata}
             subtitle="Users"
             // progress="0.75"
             // increase="+14%"
@@ -76,6 +88,8 @@ const Dashboard = () => {
         >
           <StatBox
             title="Add Users"
+            setMoreUsers={setAPIData}
+            numberOfUsers={APIdata}
             // subtitle="Sales Obtained"
             // progress="0.50"
             // increase="+21%"

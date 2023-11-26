@@ -14,10 +14,7 @@ const BoxPlot = () => {
   useEffect(() => {
     const fetchData = async () => {
       let data = await handle_get_users_box_plot();
-      console.log(data);
       setAPIData(data);
-      console.log(APIdata);
-      // setAPIData(data.map((item) => JSON.parse(item)));
     };
     fetchData();
   }, []);

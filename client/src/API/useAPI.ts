@@ -14,6 +14,32 @@ export const get_users = async (): Promise<string> => {
   }
 };
 
+export const reset_and_create_tables = async (): Promise<string> => {
+  try {
+    const { data } = await axios.patch<string>(
+      `${apiUrl}/reset_and_create_tables`
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+    return Promise.reject(
+      "An unexpected error occurred!, couldn't get the users."
+    );
+  }
+};
+
+export const get_sum_users = async (): Promise<string> => {
+  try {
+    const { data } = await axios.get<string>(`${apiUrl}/get_sum_users`);
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+    return Promise.reject(
+      "An unexpected error occurred!, couldn't get the users."
+    );
+  }
+};
+
 export const get_income_sources = async (): Promise<string> => {
   try {
     const { data } = await axios.get<string>(`${apiUrl}/get_income_sources`);

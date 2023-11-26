@@ -2,6 +2,7 @@ import { Box, Button, Input, Typography, useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import ProgressCircle from "./ProgressCircle";
 import { useState } from "react";
+import useHandler from "../hooks/useHandler.ts";
 
 const StatBox = ({
   title,
@@ -11,15 +12,25 @@ const StatBox = ({
   increase,
   button,
   input,
+  setMoreUsers,
+  numberOfUsers,
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [numberOfUsers, setNumberOfUsers] = useState("");
+  const [numberOfAddUsers, setNumberOfAddUsers] = useState("");
+  const { handle_create_fake_users, handle_reset_and_create_tables } =
+    useHandler();
+
   const action = () => {
     if (button === "add") {
-      console.log("add");
-    } else {
-      console.log("delete");
+      if (numberOfAddUsers && typeof +numberOfAddUsers === "number") {
+        setMoreUsers(numberOfUsers + +numberOfAddUsers);
+        // setMoreUsers(0);
+        handle_create_fake_users(numberOfAddUsers);
+      }
+    } else if (button === "Reset") {
+      // setMoreUsers(numberOfUsers - numberOfUsers);
+      handle_reset_and_create_tables();
     }
   };
 
@@ -40,8 +51,8 @@ const StatBox = ({
           {input && (
             <Box>
               <Input
-                value={numberOfUsers}
-                onChange={(e) => setNumberOfUsers(e.target.value)}
+                value={numberOfAddUsers}
+                onChange={(e) => setNumberOfAddUsers(e.target.value)}
                 sx={{
                   backgroundColor: colors.blueAccent[700],
                   color: colors.grey[100],

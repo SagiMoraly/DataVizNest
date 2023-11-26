@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import {
+  reset_and_create_tables,
   get_income_sources,
+  get_sum_users,
   get_expenses,
   get_savings_goals,
   create_fake_users,
@@ -22,10 +24,32 @@ const useHandler = () => {
     setError(errorMessage);
   };
 
+  const handle_reset_and_create_tables = async () => {
+    try {
+      setLoading(true);
+      const users = await reset_and_create_tables();
+      requestStatus(false, null);
+      return users;
+    } catch (error) {
+      if (typeof error === "string") requestStatus(false, error);
+    }
+  };
+
   const handle_get_income_sources = async () => {
     try {
       setLoading(true);
       const users = await get_income_sources();
+      requestStatus(false, null);
+      return users;
+    } catch (error) {
+      if (typeof error === "string") requestStatus(false, error);
+    }
+  };
+
+  const handle_get_sum_users = async () => {
+    try {
+      setLoading(true);
+      const users = await get_sum_users();
       requestStatus(false, null);
       return users;
     } catch (error) {
@@ -149,7 +173,9 @@ const useHandler = () => {
 
   return {
     value,
+    handle_reset_and_create_tables,
     handle_get_users,
+    handle_get_sum_users,
     handle_get_income_sources,
     handle_get_expenses,
     handle_get_savings_goals,

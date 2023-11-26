@@ -14,7 +14,6 @@ const BarChart = ({ isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       let data = await handle_get_users_bar_chart();
-      console.log(data);
       setAPIData(data);
     };
     fetchData();

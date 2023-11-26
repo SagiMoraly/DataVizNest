@@ -2,7 +2,58 @@
 query_get_users = """SELECT
 	JSON_OBJECT('id',id, 'username', username, 'age',age,  'email',email, 'firstName',firstName, 'lastName',lastName, 'createdAt',createdAt, 'updatedAt',updatedAt, 'balance', balance, 'startBalance',startBalance)
     FROM users"""
+query_patch_hard_reset = """
+CREATE DATABASE IF NOT EXISTS personal_finance_management_system;
+
+USE personal_finance_management_system;
+
+DROP TABLE IF EXISTS expenses;
+DROP TABLE IF EXISTS income;
+DROP TABLE IF EXISTS savings_goals;
+DROP TABLE IF EXISTS users;
+
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) NOT NULL,
+        age INT NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        firstName VARCHAR(50),
+        lastName VARCHAR(50),
+        createdAt DATETIME,
+        updatedAt DATETIME,
+        balance DECIMAL(10, 2),
+        startBalance DECIMAL(10, 2)
+    );
+    CREATE TABLE IF NOT EXISTS income (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT,
+        name VARCHAR(100),
+        amount DECIMAL(10, 2),
+        frequency VARCHAR(50),
+        createdAt DATETIME,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+    CREATE TABLE IF NOT EXISTS expenses (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT,
+        name VARCHAR(100),
+        amount DECIMAL(10, 2),
+        createdAt DATETIME,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+    CREATE TABLE IF NOT EXISTS savings_goals (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT,
+        name VARCHAR(100),
+        targetAmount DECIMAL(10, 2),
+        currentAmount DECIMAL(10, 2),
+        targetDate DATE,
+        createdAt DATETIME,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+"""
 query_get_income_sources = "SELECT * FROM income"
+query_get_count_sources = "select COUNT(id) from users"
 query_get_expenses = "SELECT * FROM expenses"
 query_get_savings_goals = "SELECT * FROM savings_goals"
 query_get_users_pie_chart = """SELECT 
