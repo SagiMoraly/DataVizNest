@@ -53,7 +53,7 @@ const BoxPlot = () => {
           }}
           margin={{ top: 60, right: 140, bottom: 60, left: 60 }}
           minValue={2000}
-          maxValue={9000}
+          maxValue={10000}
           subGroupBy="subgroup"
           padding={0.12}
           enableGridX={true}
@@ -75,7 +75,7 @@ const BoxPlot = () => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: "group",
+            legend: "Age Group",
             legendPosition: "middle",
             legendOffset: 32,
           }}
@@ -83,7 +83,7 @@ const BoxPlot = () => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: "value",
+            legend: "Icome",
             legendPosition: "middle",
             legendOffset: -40,
           }}

@@ -54,6 +54,10 @@ const HeatMap = () => {
           }}
           margin={{ top: 60, right: 90, bottom: 60, left: 90 }}
           valueFormat=">-.2s"
+          labelTextColor={{
+            from: "color",
+            modifiers: [["darker", "1.9"]],
+          }}
           axisTop={{
             tickSize: 5,
             tickPadding: 5,
@@ -81,8 +85,8 @@ const HeatMap = () => {
             type: "diverging",
             scheme: "red_yellow_blue",
             divergeAt: 0.5,
-            minValue: -100000,
-            maxValue: 100000,
+            minValue: -1000,
+            maxValue: 5000,
           }}
           emptyColor="#555555"
           legends={[

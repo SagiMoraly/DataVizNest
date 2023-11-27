@@ -5,7 +5,10 @@ import ScatterPlot from "../../components/ScatterPlot";
 const Scatter = () => {
   return (
     <Box m="20px">
-      <Header title="Scatter Chart" subtitle="Simple Scatter Chart" />
+      <Header
+        title="Scatter Chart"
+        subtitle="Age on the x-axis and starting balance on the y-axis. Each point represents a user, showing the relationship between age and starting balance"
+      />
       <Box height="75vh">
         <ScatterPlot />
       </Box>

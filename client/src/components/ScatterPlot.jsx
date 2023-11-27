@@ -66,7 +66,7 @@ const ScatterPlot = () => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: "weight",
+            legend: "Age",
             legendPosition: "middle",
             legendOffset: 46,
           }}
@@ -75,7 +75,7 @@ const ScatterPlot = () => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: "size",
+            legend: "Starting Blance",
             legendPosition: "middle",
             legendOffset: -60,
           }}
