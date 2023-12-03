@@ -219,9 +219,6 @@ users in the useHandler
 
 
 tommorow - 
-  colors
-  looks 
-  text
-  subtext for charts
+
   
 
