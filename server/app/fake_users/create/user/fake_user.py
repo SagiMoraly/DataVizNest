@@ -64,5 +64,5 @@ def generate_user_data():
     first_name = fake.first_name()
     last_name = fake.last_name()
     updated_at = datetime.datetime.now()
-
+    
     return age, created_at, balance, username, email, first_name, last_name, updated_at, age_group

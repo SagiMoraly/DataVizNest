@@ -1,10 +1,15 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:5000";
+const apiUrl: string = "http://localhost:5000";
 
-export const get_users = async (): Promise<string> => {
+interface pieSlice {
+  age: string;
+  number_of_users: number;
+}
+
+export const get_users = async (): Promise<string[][] | null> => {
   try {
-    const { data } = await axios.get<string>(`${apiUrl}/get_users`);
+    const { data } = await axios.get<string[][] | null>(`${apiUrl}/get_users`);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) return Promise.reject(error.message);

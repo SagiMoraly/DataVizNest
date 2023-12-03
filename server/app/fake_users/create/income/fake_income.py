@@ -43,7 +43,6 @@ def createIncomeAndExpense(user_id, age_group, created_at, income_data_list, exp
 
     # Convert created_at datetime to string
     created_at_str = created_at.strftime("%Y-%m-%d")
-
     # pay day is between 1 and 20
     if not 0 > created_at.day > 21:
         new_month = created_at.month + 1
